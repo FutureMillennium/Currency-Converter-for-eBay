@@ -1,0 +1,19 @@
+{
+  "name": "eBay.com Currency Converter",
+  "version": "0.2",
+  "description": "A very simple extension that converts currency on eBay.com to your desired currency",
+  "content_scripts": [
+    {
+      "matches": ["http://*.ebay.com/*"],
+      "js": ["jquery.js", "ebay.js"]
+    }
+  ],
+  "options_page": "options.html",
+  "background_page": "background.html",
+  "permissions": [
+    "http://*.ebay.com/"
+  ],
+  "icons": { "16": "icon16.png",
+           "48": "icon48.png",
+          "128": "icon128.png" }
+}

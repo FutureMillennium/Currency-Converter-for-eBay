@@ -1,0 +1,65 @@
+<html>
+<head><title>Options - eBay.com Currency Converter</title></head>
+<script type="text/javascript">
+
+// Saves options to localStorage.
+function save_options() {
+  var ticurrency = document.getElementById("icurrency");
+  var tivalue = document.getElementById("ivalue");
+  localStorage["currency"] = ticurrency.value;
+  localStorage["value"] = tivalue.value;
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById("status");
+  status.innerHTML = "Options saved.";
+  status.style.display = "block";
+  setTimeout(function() {
+    status.style.display = "none";
+  }, 2000);
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  var tcurrency = localStorage["currency"];
+  var tvalue = localStorage["value"];
+  if (!tcurrency) {
+    return;
+  }
+  var ticurrency = document.getElementById("icurrency");
+  var tivalue = document.getElementById("ivalue");
+  ticurrency.value = tcurrency;
+  tivalue.value = tvalue;
+}
+
+</script>
+<style>
+body {
+  margin: 25px 25px 60px 25px;
+  font-family: Segoe UI, Tahoma, Geneva, sans-serif;
+  font-size: 14px;
+}
+button {
+  padding: 10px 20px;
+}
+h1 {
+  color: #06f;
+  font-weight: normal;
+}
+#status {
+  display: none;
+  padding: 15px;
+  border: 1px #06f solid;
+  background: #d5e6ff;
+}
+</style>
+<body onload="restore_options()">
+
+<h1>Options – eBay.com Currency Converter</h1>
+
+<div id="status"></div>
+
+<p>1 USD = <input type="text" id="icurrency" value="19.5" size="5" /> <input type="text" id="ivalue" size="3" value="CZK" /> (e.g. 19.5 CZK)</p>
+
+<p><button onclick="save_options()">Save</button></p>
+</body>
+</html>
